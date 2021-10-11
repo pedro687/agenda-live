@@ -7,17 +7,25 @@ import { ResponsePageable } from '../models/responsePageable.model';
   providedIn: 'root'
 })
 export class LiveService {
-  url: string = 'http://localhost:8080/lives';
+  apiUrl = 'http://localhost:8080/lives';
 
   httpOptions = {
-    Headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+      private httpClient: HttpClient
+  ) {}
+
+  public getLives(): Observable<ResponsePageable> {
+      return this.httpClient.get<ResponsePageable>(this.apiUrl);
+  }
+
 
   public getLivesWithFlag(flag: string): Observable<ResponsePageable> {
-    return this.http.get<ResponsePageable>(this.url + "?flag=" + flag);
-  }
+    console.log('oi')
+    return this.httpClient.get<ResponsePageable>(this.apiUrl + "?" + flag);
+}
 }
