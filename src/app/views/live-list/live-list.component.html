@@ -10,7 +10,9 @@
           <div class="row" style="font-size: 15px;">
           <span fxFlex="70" fxLayoutAlign="start center">{{live.liveName}}</span>
           <span fxFlex></span>
-          <span fxFlex="25" fxLayoutAlign="end center">{{ live.liveDate  | localDateTime }}</span>
+          <mat-chip class="mat-chip-date"  fxFlex="25" fxLayoutAlign="center center">
+            <span>{{ live.liveDate  | localDateTime }}</span>
+          </mat-chip>
         </div>
         </mat-card-title>
           <div class="row">
